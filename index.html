@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Progress Report App</title>
+		<!-- Include any necessary CSS files -->
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1>Progress Report App</h1>
+		<div class="container">
+			<div class="input-section">
+				<h2>Example Report</h2>
+				<textarea id="exampleReport" rows="4" cols="50"></textarea>
+
+				<h2>Teacher's Notes</h2>
+				<textarea id="teacherNotes" rows="4" cols="50"></textarea>
+
+				<h2>Student Survey Answers</h2>
+				<textarea id="surveyAnswers" rows="4" cols="50"></textarea>
+
+				<h2>Form Teacher's Notes</h2>
+				<textarea id="formTeacherNotes" rows="4" cols="50"></textarea>
+			</div>
+			<div class="output-section">
+				<h2>Progress Report</h2>
+				<p id="reportOutput"></p>
+				<div id="loadingSpinner" class="loader"></div>
+			</div>
+		</div>
+
+		<button class="generate-button" id="generateReportButton">Generate Report</button>
+		<!-- Include the JavaScript file -->
+		<script src="app.js"></script>
+	</body>
+</html>
