@@ -33,7 +33,7 @@ async function generateReport() {
 	]
 	// Add a delay of 2 seconds between consecutive API requests
 	await new Promise(resolve => setTimeout(resolve, 2000))
-
+try {
 	const response = await fetch('https://api.openai.com/v1/chat/completions', {
 		method: 'POST',
 		headers: {
@@ -56,7 +56,13 @@ async function generateReport() {
 	//console.log(generatedReport)
 	hideLoadingSpinner()
 	renderReport(generatedReport)
+} catch (error) {
+        console.log('Error:', error);
+        reportOutput.textContent = 'An error occurred while generating the report.';
+        hideLoadingSpinner();
 }
+}
+
 
 function renderReport(report) {
 	reportOutput.innerHTML = ''
