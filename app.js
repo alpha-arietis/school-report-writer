@@ -8,27 +8,21 @@ const generateReportButton = document.getElementById('generateReportButton')
 const reportOutput = document.getElementById('reportOutput')
 const loadingSpinner = document.getElementById('loadingSpinner')
 
-// Function to show the loading spinner
 function showLoadingSpinner() {
 	loadingSpinner.style.display = 'block'
 }
 
-// Function to hide the loading spinner
 function hideLoadingSpinner() {
 	loadingSpinner.style.display = 'none'
 }
 
-// Function to generate the progress report
 async function generateReport() {
 	showLoadingSpinner()
-	// Get the input values
+
 	const exampleReport = exampleReportInput.value
 	const teacherNotes = teacherNotesInput.value
 	const surveyAnswers = surveyAnswersInput.value
 	const formTeacherNotes = formTeacherNotesInput.value
-
-	// Combine the input data
-	//const combinedInput = `${teacherNotes}\n${surveyAnswers}\n${formTeacherNotes}`
 
 	const messages = [
 		{ role: 'system', content: 'You are a user' },
@@ -56,33 +50,25 @@ async function generateReport() {
 		}),
 	})
 
-	// Get the response from the API
 	const data = await response.json()
 
-	// Extract the generated report from the API response
 	const generatedReport = data.choices[0].message.content
 	//console.log(generatedReport)
 	hideLoadingSpinner()
-	// Display the generated report
 	renderReport(generatedReport)
 }
 
-// Function to render the generated report
 function renderReport(report) {
-	// Clear previous report output
 	reportOutput.innerHTML = ''
 
-	// Create report elements
 	// const reportTitle = document.createElement('h2')
 	// reportTitle.textContent = 'Progress Report'
 
 	const reportText = document.createElement('p')
 	reportText.textContent = report
 
-	// Append report elements to the output
 	//reportOutput.appendChild(reportTitle)
 	reportOutput.appendChild(reportText)
 }
 
-// Attach event listener to the generate report button
 generateReportButton.addEventListener('click', generateReport)
